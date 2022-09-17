@@ -22,11 +22,11 @@ runs:
       uses: actions/checkout@v2
     - name: load env
       run: |
-        sed "" ${{ inputs.env-path }} >> $GITHUB_ENV
+        sudo sed "" ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: add exception for current directory
       run: |
-        git config --global --add safe.directory $(pwd)
+        sudo git config --global --add safe.directory $(pwd)
       shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v2
@@ -37,8 +37,8 @@ runs:
         ref: master
     - name: move files and update file rights
       run: |
-        rm -fr ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/
-        chmod -R +x ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/${{ env.CI-SCRIPT-FOLDER-NAME }}
+        sudo rm -fr ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        sudo mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/
+        sudo chmod -R +x ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/${{ env.CI-SCRIPT-FOLDER-NAME }}
       shell: bash

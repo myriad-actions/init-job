@@ -33,7 +33,7 @@ runs:
       with:
         repository:  ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
-        path: ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
         ref: master
     - name: move files and update file rights
       run: |

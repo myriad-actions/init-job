@@ -10,10 +10,10 @@ inputs:
         
 runs:
   using: "composite"
-  steps:  
+  steps:
+    - name: checkout current repo
+      uses: actions/checkout@v2
     - name: load env
       run: |
         sed "" ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
-    - name: checkout current repo
-      uses: actions/checkout@v2

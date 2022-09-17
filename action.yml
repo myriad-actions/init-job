@@ -1,18 +1,18 @@
 name: 'init-job'
 description: > 
   initialize job environment with environment variables
-secrets:
-  github-pat:
-    description: >
-      Personal access token (PAT) used by actions/checkout@v2 
-      to fetch the repository. Note that github token
-      can be used only for the working directory. 
-    required: true
+
 inputs:
   env-path:
     description: >-
       path to the configuration file of environment variables
     default: ./.github/.env
+    required: true
+  github-pat:
+    description: >
+      Personal access token (PAT) used by actions/checkout@v2 
+      to fetch the repository. Note that github token
+      can be used only for the working directory. 
     required: true
         
 runs:
@@ -32,7 +32,7 @@ runs:
       uses: actions/checkout@v2
       with:
         repository:  ${{ env.CI-SCRIPT-REPO }}
-        token: ${{ secrets.github-pat }}
+        token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
         ref: master
     - name: move files and update file rights

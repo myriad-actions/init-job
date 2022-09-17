@@ -1,0 +1,19 @@
+name: 'init-job'
+description: > 
+  initialize job environment with environment variables
+inputs:
+  env-path:
+    description: >-
+      path to the configuration file of environment variables
+    default: ./.github/.env
+    required: true
+        
+runs:
+  using: "composite"
+  steps:  
+    - name: load env
+      run: |
+        sed "" ${{ inputs.env-path }} >> $GITHUB_ENV
+      shell: bash
+    - name: checkout current repo
+      uses: actions/checkout@v2

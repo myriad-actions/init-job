@@ -26,7 +26,7 @@ runs:
       shell: bash
     - name: add exception for current directory
       run: |
-        git config --system --add safe.directory $(pwd)
+        git config --global --add safe.directory $(pwd)
       shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v2

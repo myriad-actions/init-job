@@ -44,5 +44,5 @@ runs:
       shell: bash
     - name: load cicd env
       run: |
-        sudo sed '/^#/d' ${{ env.CICD-ENV-PATH }} >> $GITHUB_ENV
+        sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV
       shell: bash

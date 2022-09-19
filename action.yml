@@ -22,7 +22,7 @@ runs:
       uses: actions/checkout@v2
     - name: load env
       run: |
-        sudo sed "" ${{ inputs.env-path }} >> $GITHUB_ENV
+        sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: add exception for current directory
       run: |

@@ -33,11 +33,11 @@ runs:
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
         ref: ter
-    - name: update file rights
-      run: |
-        sudo chmod -R +x *
-      shell: bash
     - name: load cicd env
       run: |
         sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV
+      shell: bash
+    - name: update file rights
+      run: |
+        sudo chmod -R +x *
       shell: bash

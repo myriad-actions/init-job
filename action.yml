@@ -20,6 +20,8 @@ runs:
   steps:
     - name: checkout current repo
       uses: actions/checkout@v2
+      with:
+        path: main
     - name: load project env
       run: |
         sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
@@ -37,8 +39,7 @@ runs:
         ref: ter
     - name: move files and update file rights
       run: |
-        sudo mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/
-        sudo chmod -R +x ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/${{ env.CI-SCRIPT-FOLDER-NAME }}
+        sudo chmod -R +x *
       shell: bash
     - name: load cicd env
       run: |

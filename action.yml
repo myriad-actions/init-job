@@ -37,8 +37,6 @@ runs:
         ref: master
     - name: move files and update file rights
       run: |
-        sudo rm -fr ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
         sudo mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/
         sudo chmod -R +x ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/${{ env.CI-SCRIPT-FOLDER-NAME }}
       shell: bash

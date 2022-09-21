@@ -18,18 +18,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: add exception for current directory
-      run: |
-        sudo git config --global --add safe.directory $GITHUB_WORKSPACE
-      shell: bash
     - name: checkout current repo
       uses: actions/checkout@v3
       with:
-        path: main
-        fetch-depth: 2
+        path: main       
     - name: load project env
       run: |
-        cd main; sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
+        sudo sed '/^#/d' main/${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v3

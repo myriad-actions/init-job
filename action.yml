@@ -18,6 +18,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: add exception for current directory
+      run: |
+        sudo git config --global --add safe.directory $(pwd)
+      shell: bash
     - name: checkout current repo
       uses: actions/checkout@v2
       with:

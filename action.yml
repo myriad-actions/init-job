@@ -24,12 +24,12 @@ runs:
         path: main
     - name: load project env
       run: |
-        sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
+        cd main; sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
-    - name: add exception for current directory
-      run: |
-        sudo git config --global --add safe.directory $(pwd)
-      shell: bash
+    #- name: add exception for current directory
+    #  run: |
+    #    sudo git config --global --add safe.directory $(pwd)
+    #  shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v2
       with:
@@ -37,7 +37,7 @@ runs:
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
         ref: ter
-    - name: move files and update file rights
+    - name: update file rights
       run: |
         sudo chmod -R +x *
       shell: bash

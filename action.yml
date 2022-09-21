@@ -23,15 +23,16 @@ runs:
         sudo git config --global --add safe.directory $(pwd)
       shell: bash
     - name: checkout current repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: main
+        fetch-depth: 2
     - name: load project env
       run: |
         cd main; sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: checkout tools repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository:  ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}

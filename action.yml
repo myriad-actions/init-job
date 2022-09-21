@@ -26,10 +26,6 @@ runs:
       run: |
         cd main; sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
-    #- name: add exception for current directory
-    #  run: |
-    #    sudo git config --global --add safe.directory $(pwd)
-    #  shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v2
       with:

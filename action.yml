@@ -34,7 +34,7 @@ runs:
         repository:  ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
-        ref: master
+        ref: ter
     - name: move files and update file rights
       run: |
         sudo mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/

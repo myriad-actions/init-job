@@ -43,5 +43,5 @@ runs:
       run: sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV
       shell: bash
     - name: update file rights
-      run: sudo chmod -R +x *
+      run: sudo chmod -R +x * ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
       shell: bash 

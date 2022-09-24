@@ -32,7 +32,6 @@ runs:
         repository:  ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
-        ref: ter
     - name: load cicd env
       run: |
         sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV

@@ -19,30 +19,30 @@ runs:
   using: "composite"
   steps:
     - name: checkout current repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        path: main       
     - name: load project env
       run: |
-        sudo sed '/^#/d' ${{ inputs.env-path }} >> $GITHUB_ENV
-      shell: bash
-    - name: add exception for current directory
-      run: |
-        sudo git config --global --add safe.directory $(pwd)
+        sudo sed '/^#/d' main/${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: checkout tools repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository:  ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
-        ref: master
-    - name: move files and update file rights
-      run: |
-        sudo rm -fr ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        sudo mv ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/
-        sudo chmod -R +x ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}/${{ env.CI-SCRIPT-FOLDER-NAME }}
-      shell: bash
+        ref: ter
     - name: load cicd env
       run: |
         sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV
       shell: bash
+    - name: update file rights
+      run: |
+        sudo chmod -R +x *
+      shell: bash
+   - name: Configure AWS credentials 
+     uses: aws-actions/configure-aws-credentials@v1
+     with:
+       role-to-assume: ${{ env.AWS-ROLE-TO-ASSUME }}
+       aws-region: ${{ env.AWS-REGION }}

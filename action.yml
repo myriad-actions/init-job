@@ -35,7 +35,7 @@ runs:
     - name: copy tools
       run: |
         sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        sudo cp -r ${{ env.CI-SCRIPT-REPO }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        sudo cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
       shell: bash
     - name: load cicd env
       run: |

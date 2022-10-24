@@ -7,7 +7,7 @@ inputs:
     description: >-
       path to the configuration file of environment variables
     default: ./.github/.env
-    required: true
+    required: false
   github-pat:
     description: >
       Personal access token (PAT) used by actions/checkout@v2 

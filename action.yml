@@ -26,7 +26,7 @@ runs:
       with:
         path: main       
     - name: load project env
-      run: sudo sed '/^#/d' main//${{ inputs.env-path }} >> $GITHUB_ENV
+      run: command -v sudo && sudo sed '/^#/d' main//${{ inputs.env-path }} >> $GITHUB_ENV | sed '/^#/d' main//${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: checkout tools repository
       uses: actions/checkout@v3
@@ -36,8 +36,8 @@ runs:
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
     - name: copy tools
       run: |
-        sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        sudo cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        command -v sudo && sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }} |  mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        command -v sudo && sudo cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }} |  cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
       shell: bash
     - name: load cicd env
       run: sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV

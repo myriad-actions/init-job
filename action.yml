@@ -37,7 +37,7 @@ runs:
     - name: copy tools
       run: |
         command -v sudo && sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }} |  mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
-        command -v sudo && sudo cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }} |  cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
+        command -v sudo && sudo /bin/cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }} |  /bin/cp -r ${{ env.CI-SCRIPT-FOLDER-NAME }} ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}
       shell: bash
     - name: load cicd env
       run: sudo sed '/^#/d' ${{ env.CICD-ENV }} >> $GITHUB_ENV

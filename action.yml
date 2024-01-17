@@ -31,9 +31,10 @@ runs:
     - name: checkout tools repository
       uses: actions/checkout@v3
       with:
-        repository:  ${{ env.CI-SCRIPT-REPO }}
+        repository: ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
-        path: ${{ env.CI-SCRIPT-FOLDER-NAME }}
+        path: ${{ env.CI-SCRIPT-FOLDER-NAME }}  
+        ref: : ${{ env.CI-SCRIPT-REPO-REF || "" }}
     - name: copy tools
       run: |
         sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}

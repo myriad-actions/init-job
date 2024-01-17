@@ -34,7 +34,6 @@ runs:
         repository: ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
         path: ${{ env.CI-SCRIPT-FOLDER-NAME }}  
-        ref: : ${{ env.CI-SCRIPT-REPO-REF || "" }}
     - name: copy tools
       run: |
         sudo mkdir -p ${{ env.CI-SCRIPT-WORKING-DIRECTORY }}

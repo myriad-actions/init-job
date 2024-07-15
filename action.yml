@@ -10,7 +10,7 @@ inputs:
     required: false
   github-pat:
     description: >
-      Personal access token (PAT) used by actions/checkout@v2 
+      Personal access token (PAT) used by actions/checkout 
       to fetch the repository. Note that github token
       can be used only for the working directory. 
     required: true
@@ -22,14 +22,14 @@ runs:
       run : rm -fr *
       shell: bash
     - name: checkout current repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         path: main       
     - name: load project env
       run: sudo sed '/^#/d' main//${{ inputs.env-path }} >> $GITHUB_ENV
       shell: bash
     - name: checkout tools repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{ env.CI-SCRIPT-REPO }}
         token: ${{ inputs.github-pat }}
